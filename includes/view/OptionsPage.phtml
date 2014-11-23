@@ -1,0 +1,62 @@
+<script type="text/javascript" src="/wp-content/plugins/AudaxCustomShortcodes/js/AudaxCustomShortcodesMenu.js"></script>
+<link rel="stylesheet" type="text/css" href="/wp-content/plugins/AudaxCustomShortcodes/css/AudaxCustomShortcodesMenu.css"/>
+<div class="wrap">
+    <h2><?php echo AUDAX_CUSTOM_SHORTCODES_PLUGIN_TITLE; ?></h2>
+    <?php include 'SettingsSectionText.phtml'; ?>
+    <form method="post" id="audax-custom-shortcodes-form">
+        <table class="audax-custom-shortcodes-table">
+            <?php
+            $shortcodes = Audax\CustomShortcodes::fetchAllShortcodes();
+            if (!empty($shortcodes)) {
+                $lastCollection = '';
+                $count = 0;
+                foreach ($shortcodes as $shortcode) {
+                    if ($lastCollection !== $shortcode['collection']) {
+                        $lastCollection = $shortcode['collection'];
+                        ?>
+                        <tr><td>
+                                <h3 class="title"><?php echo ucfirst($shortcode['collection']); ?></h3>
+                            </td><td colspan="3"></td>
+                        </tr>
+                        <tr>
+                            <th>Collection</th>
+                            <th>Tag</th>
+                            <th>Value</th>
+                            <th>Delete</th>
+                        </tr>
+                        <?php
+                    }
+                    ?>
+                    <tr>
+                        <td>
+                            <span class="audax-input-show"><?php echo $shortcode['collection']; ?></span>
+                            <input class="audax-input-hidden" type="text" name="audax-custom-shortcodes-collection[<?php echo $shortcode['id']; ?>]" value="<?php echo $shortcode['collection']; ?>" max-length="255" />
+                        </td>
+                        <td>
+                            <span class="audax-input-show"><?php echo $shortcode['tag']; ?></span>
+                            <input class="audax-input-hidden" type="text" name="audax-custom-shortcodes-tag[<?php echo $shortcode['id']; ?>]" value="<?php echo $shortcode['tag']; ?>" max-length="255" />
+                        </td>
+                        <td>
+                            <span class="audax-input-show"><?php echo $shortcode['value']; ?></span>
+                            <input class="audax-input-hidden" type="text" name="audax-custom-shortcodes-value[<?php echo $shortcode['id']; ?>]" value="<?php echo $shortcode['value']; ?>" max-length="255" />
+                        </td>
+                        <td>
+                            <input type="checkbox" name="audax-custom-shortcodes-delete[<?php echo $shortcode['id']; ?>]" />
+                        </td>
+                    </tr>
+                    <?php
+                    $count++;
+                }
+            }
+            ?>
+        </table>
+        <br/>
+        <?php if (WPLANG === 'nl_NL') { ?>
+            <input type="submit" name="audax-custom-shortcodes-form-save" value="Opslaan" class="button button-primary button-large" />
+            <button type="button" name="new" class="button button-large audax-custom-shortcodes-new">Nieuw</button>
+        <?php } else { ?>
+            <input type="submit" name="audax-custom-shortcodes-form-save" value="Save changes" class="button button-primary button-large" />
+            <button type="button" name="new" class="button button-large audax-custom-shortcodes-new">New</button>
+        <?php } ?>
+    </form>
+</div>

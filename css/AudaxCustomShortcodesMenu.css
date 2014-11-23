@@ -1,0 +1,17 @@
+.audax-input-hidden {
+    display: none;
+}
+
+.audax-input-show {
+    text-decoration: none;
+    font-style: italic;
+    color: #0074A2;
+}
+
+table.audax-custom-shortcodes-table td {
+    text-align: left;
+}
+
+table.audax-custom-shortcodes-table tr {
+    height: 29px;
+}
