@@ -43,8 +43,8 @@ function audaxCustomShortcodesSettings() {
     if (!current_user_can('manage_options')) {
         wp_die('You do not have permission to access this page.');
     }
-    require_once 'process/MenuProcess.php';
-    require_once 'includes/view/OptionsPage.phtml';
+    require_once AUDAX_CUSTOM_SHORTCODES_PLUGIN_DIR . 'process/MenuProcess.php';
+    require_once AUDAX_CUSTOM_SHORTCODES_PLUGIN_DIR . 'includes/view/OptionsPage.phtml';
     add_action('admin_init', 'audaxCustomShortcodesAdminInit');
 }
 
@@ -53,7 +53,7 @@ function audaxHelp() {
         wp_die('You do not have permission to access this page.');
     }
 
-    require_once 'includes/view/HelpPage.phtml';
+    require_once AUDAX_CUSTOM_SHORTCODES_PLUGIN_DIR . 'includes/view/HelpPage.phtml';
 }
 
 function audaxCustomShortcodesPluginActionLinks($links, $file) {

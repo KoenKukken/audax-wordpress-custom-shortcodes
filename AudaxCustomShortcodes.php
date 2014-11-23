@@ -18,7 +18,7 @@ if (!defined('AUDAX_CUSTOM_SHORTCODES_PLUGIN_NAME')) {
     define('AUDAX_CUSTOM_SHORTCODES_PLUGIN_NAME', trim(dirname(plugin_basename(__FILE__)), '/'));
 }
 if (!defined('AUDAX_CUSTOM_SHORTCODES_PLUGIN_DIR')) {
-    define('AUDAX_CUSTOM_SHORTCODES_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . AUDAX_CUSTOM_SHORTCODES_PLUGIN_NAME);
+    define('AUDAX_CUSTOM_SHORTCODES_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . AUDAX_CUSTOM_SHORTCODES_PLUGIN_NAME . '/');
 }
 if (!defined('AUDAX_CUSTOM_SHORTCODES_PLUGIN_URL')) {
     define('AUDAX_CUSTOM_SHORTCODES_PLUGIN_URL', WP_PLUGIN_URL . '/' . AUDAX_CUSTOM_SHORTCODES_PLUGIN_NAME);
@@ -33,9 +33,9 @@ if (!defined('AUDAX_CUSTOM_SHORTCODES_VERSION')) {
     define('AUDAX_CUSTOM_SHORTCODES_VERSION', '1.0');
 }
 
-require_once 'includes/classes.php';
-require_once 'includes/functions.php';
-require_once 'includes/initialize.php';
+require_once AUDAX_CUSTOM_SHORTCODES_PLUGIN_DIR . 'includes/classes.php';
+require_once AUDAX_CUSTOM_SHORTCODES_PLUGIN_DIR . 'includes/functions.php';
+require_once AUDAX_CUSTOM_SHORTCODES_PLUGIN_DIR . 'includes/initialize.php';
 
 //add_action('admin_menu', 'audaxAdminMenu');
 add_action('admin_menu', 'audaxCustomShortcodesAdminMenu');
